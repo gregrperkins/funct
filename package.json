@@ -1,0 +1,19 @@
+{
+  "name": "funct",
+  "version": "0.0.1",
+  "description": "Function helpers for use with besync, or just because.",
+  "main": "funct.js",
+  "devDependencies": {
+    "grunt": "0.4.0rc7",
+    "grunt-cli": "~0.1.6",
+    "grunt-contrib-watch": "~0.1.4",
+    "grunt-mocha-hack": "0.0.4",
+    "mocha": "~1.7",
+    "should": "~1.2.1"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/grunt test",
+    "tdd": "./node_modules/.bin/grunt tdd"
+  },
+  "readme": "# funct\n\nThis one has tests! Docs and more info to come."
+}
