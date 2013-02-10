@@ -181,6 +181,34 @@ funct.fax = function(opt_name) {
   }
 };
 
+/**
+ * Creates a function that short circuits to calling the given cb,
+ *  either with the error it gets when called, or the given args.
+ * TODO(gregp): only useful to forEach ...
+ * TODO(gregp): test
+ */
+funct.returner = function (cb, var_args) {
+  var args = [].slice.call(arguments, 1);
+  return function (err) {
+    args.unshift(err);
+    return cb.apply(this, args);
+  };
+};
+
+/**
+ * Creates a function which injects the argument at the beginning
+ *  of the set that it passes on to the next.
+ * TODO(gregp): test
+ */
+funct.injector = function (arg) {
+  return function () {
+    var args = [].slice.call(arguments);
+    var next = args.pop();
+    return next.apply(this, [null, arg].concat(args));
+  };
+};
+
+
 // Lightweight tracer, drop-in for racetrack
 funct.lightrace = function(obj, cb, name) {
   return funct.printargs(cb, name);
